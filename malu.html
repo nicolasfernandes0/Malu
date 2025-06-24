@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maria Luisa - 15 Anos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Font Awesome atualizado -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff8f5;
+    }
+    header {
+      background: linear-gradient(to right, #f9c5d1, #fcb69f);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3em;
+    }
+    .section-title {
+      font-size: 2.5em;
+      font-family: 'Great Vibes', cursive;
+      color: #e38b87;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
+    .present-image {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      height: 200px;
+      object-fit: cover;
+    }
+    footer {
+      background-color: #fcb69f;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .img-fallback {
+      background-color: #f9c5d1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      height: 300px;
+    }
+    #fallback-form {
+      display: none;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+    .btn-whatsapp:hover {
+      background-color: #128C7E;
+      color: white;
+    }
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .local-info {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    .mapboxgl-marker {
+      background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Maria Luisa - 15 Anos</h1>
+    <p>12 de Julho de 2026 | Salão Bella Festa | 20h</p>
+  </header>
+
+  <div class="container my-5">
+    <section class="mb-5">
+      <h2 class="section-title">Sobre Mim</h2>
+      <p class="text-center">Olá! Eu sou a Maria Luisa. Estou muito feliz em comemorar esse momento tão especial com você. Amo música, dança, estar com meus amigos e minha família. Será uma noite mágica!</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">Confirmação de Presença</h2>
+      <form id="rsvp-form" class="mx-auto" style="max-width: 500px;">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="mb-3">
+          <input type="number" class="form-control" id="acompanhantes" placeholder="Número de acompanhantes" required min="0">
+        </div>
+        <button type="submit" class="btn w-100" style="background-color:#f9c5d1; color: white;">Confirmar Presença</button>
+      </form>
+      <p class="text-center mt-3" id="msg-confirmacao"></p>
+      
+      <div id="fallback-form">
+        <p class="text-danger">Nosso sistema de confirmação está temporariamente indisponível.</p>
+        <p>Por favor, confirme sua presença através do nosso formulário alternativo:</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYOUR_GOOGLE_FORM_ID/viewform" 
+           class="btn btn-primary w-100 mb-2" 
+           target="_blank">
+           Confirmar via Google Forms
+        </a>
+        <p class="mt-2">Ou pelo WhatsApp:</p>
+        <a href="https://wa.me/5511945353132?text=Olá,%20gostaria%20de%20confirmar%20minha%20presença%20para%20a%20festa%20de%2015%20anos%20da%20Maria%20Luisa" 
+           class="btn btn-whatsapp w-100" 
+           target="_blank">
+           <i class="fab fa-whatsapp"></i> Confirmar via WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">Galeria</h2>
+      <div class="row gallery">
+        <div class="col-md-4">
+          <img src="https://source.unsplash.com/random/250x300/?child" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="https://source.unsplash.com/random/250x300/?teenager" class="img-fluid" alt="Foto de adolescência" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="https://source.unsplash.com/random/250x300/?photo+shoot" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+      </div>
+    </section>
+
+<section class="mb-5">
+  <h2 class="section-title">Lista de Presentes</h2>
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <img src="imagens/caixadesom.jpg" 
+           alt="Caixa de Som Bluetooth" 
+           class="present-image" 
+           onerror="this.onerror=null;this.className='present-image img-fallback'">
+      <h5>Caixa de Som Bluetooth</h5>
+      <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">Presentear</a>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="imagens/maquiagem.jpg" 
+           alt="Kit Maquiagem" 
+           class="present-image" 
+           onerror="this.onerror=null;this.className='present-image img-fallback'">
+      <h5>Kit Maquiagem Profissional</h5>
+      <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">Presentear</a>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="imagens/SPA.jpg" 
+           alt="Vale Spa" 
+           class="present-image" 
+           onerror="this.onerror=null;this.className='present-image img-fallback'">
+      <h5>Vale Spa/Beleza</h5>
+      <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
+    </div>
+  </div>
+</section>
+
+    <section class="text-center my-5">
+      <p>Você será redirecionado para um ambiente seguro do Mercado Pago para finalizar seu presente com Pix, Cartão de Crédito ou Débito 💳✨</p>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="section-title">Localização</h2>
+      <div class="local-info">
+        <h3 class="text-center mb-3">Salão Bella Festa</h3>
+        <p class="text-center mb-4">
+          <i class="fas fa-map-marker-alt"></i> Rua São Paulo, 323 - Taboão<br>
+          São Paulo - SP<br>
+          CEP: 09668-010
+        </p>
+        
+        <div id="map"></div>
+        
+        <div class="text-center mt-3">
+          <a href="https://www.google.com/maps/place/R.+S%C3%A3o+Paulo,+323+-+Vila+Santa+Luzia,+S%C3%A3o+Bernardo+do+Campo+-+SP,+09668-010/@-23.6657338,-46.6141155,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce44b869ac45e5:0x241eeefa12e66084!8m2!3d-23.6657338!4d-46.6115406!16s%2Fg%2F11lmp40bjh?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" 
+             target="_blank" 
+             class="btn btn-primary">
+             <i class="fas fa-directions"></i> Obter Direções
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Com amor, Maria Luisa 💖</p>
+  </footer>
+
+  <!-- Scripts atualizados -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Mapbox GL JS -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
+  
+  <script>
+    // Inicializar o Mapbox
+    mapboxgl.accessToken = 'pk.eyJ1Ijoibmljb2xhc2Zlcm5hbmRlczEyIiwiYSI6ImNtY2FyYWQzZzA2dnAycnB5bnpwNDh2bG0ifQ.hOwCFxFUS3nA93ttayqEyg';
+    
+    // Coordenadas do Salão Bella Festa
+    const salao = [-46.611535235582195, -23.665665013985002]; // [longitude, latitude]
+    
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: salao,
+      zoom: 15
+    });
+    
+    // Adicionar controles de navegação
+    map.addControl(new mapboxgl.NavigationControl());
+    
+    // Criar um marcador personalizado
+    const marker = new mapboxgl.Marker({
+      color: '#f9c5d1'
+    })
+      .setLngLat(salao)
+      .setPopup(new mapboxgl.Popup().setHTML('<h5>Salão Bella Festa</h5><p>Local da festa de 15 anos da Maria Luisa</p>'))
+      .addTo(map);
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const rsvpForm = document.getElementById('rsvp-form');
+      const msgConfirmacao = document.getElementById('msg-confirmacao');
+      const fallbackForm = document.getElementById('fallback-form');
+      
+      if(localStorage.getItem('formFailed')) {
+        showFallback();
+      }
+      
+      async function submitRSVP(e) {
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const acompanhantes = document.getElementById('acompanhantes').value;
+        
+        if (!nome || isNaN(acompanhantes) || acompanhantes < 0) {
+          showMessage('Por favor, preencha todos os campos corretamente.', 'error');
+          return;
+        }
+        
+        showMessage('Enviando sua confirmação...', 'loading');
+        
+        try {
+          const response = await fetch('https://api.sheetmonkey.io/form/pzJG2fUpSjbVf4FzQzxVB5', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              Nome: nome,
+              Acompanhantes: acompanhantes,
+              Data: new Date().toLocaleString('pt-BR'),
+              Origem: 'Site Aniversário'
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+          }
+          
+          localStorage.removeItem('formFailed');
+          
+          showMessage(`Obrigada, ${nome}! Sua presença foi confirmada com ${acompanhantes} acompanhante(s).`, 'success');
+          rsvpForm.reset();
+          
+        } catch (error) {
+          console.error('Erro ao enviar:', error);
+          localStorage.setItem('formFailed', 'true');
+          
+          showMessage('Ocorreu um erro ao enviar sua confirmação.', 'error');
+          showFallback();
+        }
+      }
+      
+      function showMessage(message, type) {
+        msgConfirmacao.textContent = message;
+        msgConfirmacao.style.color = type === 'error' ? '#e74c3c' : 
+                                   type === 'success' ? '#27ae60' : '#2c3e50';
+      }
+      
+      function showFallback() {
+        fallbackForm.style.display = 'block';
+      }
+      
+      rsvpForm.addEventListener('submit', submitRSVP);
+    });
+  </script>
+</body>
+</html>
