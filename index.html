@@ -31,10 +31,22 @@
       text-align: center;
     }
     .gallery img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      transition: transform 0.3s;
+     width: 100%;
+     height: 250px; /* Altura fixa */
+     object-fit: cover; /* Corta a imagem mantendo a proporção */
+     object-position: center top 20%; /* Ajuste para focar no rosto */
+     border-radius: 10px;
+     margin-bottom: 15px;
+     transition: transform 0.3s;
+    }
+   /* Ajuste para retratos verticais */
+    .gallery .portrait {
+    object-position: center 30%;
+    }
+
+   /* Ajuste para fotos em grupo */
+   .gallery .group-photo {
+    object-position: center 40%;
     }
     .gallery img:hover {
       transform: scale(1.03);
@@ -147,13 +159,31 @@
       <h2 class="section-title">Galeria</h2>
       <div class="row gallery">
         <div class="col-md-4">
-          <img src="https://source.unsplash.com/random/250x300/?child" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/0.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="https://source.unsplash.com/random/250x300/?teenager" class="img-fluid" alt="Foto de adolescência" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/1.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="https://source.unsplash.com/random/250x300/?photo+shoot" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/2.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="imagens/3.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="imagens/4.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        <div class="col-md-4">
+          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
       </div>
     </section>
