@@ -30,26 +30,31 @@
       margin-bottom: 20px;
       text-align: center;
     }
+    .gallery {
+      position: relative;
+    }
     .gallery img {
      width: 100%;
-     height: 250px; /* Altura fixa */
-     object-fit: cover; /* Corta a imagem mantendo a proporção */
-     object-position: center top 20%; /* Ajuste para focar no rosto */
+     height: 250px;
+     object-fit: cover;
+     object-position: center top 20%;
      border-radius: 10px;
      margin-bottom: 15px;
      transition: transform 0.3s;
+     cursor: pointer;
     }
-   /* Ajuste para retratos verticais */
+    /* Ajuste para retratos verticais */
     .gallery .portrait {
     object-position: center 30%;
     }
 
-   /* Ajuste para fotos em grupo */
-   .gallery .group-photo {
+    /* Ajuste para fotos em grupo */
+    .gallery .group-photo {
     object-position: center 40%;
     }
     .gallery img:hover {
       transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
     .present-image {
       max-width: 100%;
@@ -111,6 +116,74 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+    .lightbox-nav {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+    .lightbox-nav button {
+      background: rgba(255, 255, 255, 0.3);
+      border: none;
+      color: white;
+      font-size: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-nav button:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
@@ -159,64 +232,77 @@
       <h2 class="section-title">Galeria</h2>
       <div class="row gallery">
         <div class="col-md-4">
-          <img src="imagens/0.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/0.jpg" class="img-fluid" alt="Foto de infância" data-caption="Maria Luisa aos 5 anos" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="imagens/1.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/1.jpg" class="img-fluid" alt="Foto de infância" data-caption="Primeiro dia de escola" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="imagens/2.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/2.jpg" class="img-fluid" alt="Foto de infância" data-caption="Aniversário de 10 anos" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="imagens/3.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/3.jpg" class="img-fluid" alt="Foto de infância" data-caption="Férias na praia" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="imagens/4.jpg" class="img-fluid" alt="Foto de infância" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="imagens/4.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
         <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
       </div>
     </section>
 
-<section class="mb-5">
-  <h2 class="section-title">Lista de Presentes</h2>
-  <div class="row g-4">
-    <div class="col-md-4 text-center">
-      <img src="imagens/caixadesom.jpg" 
-           alt="Caixa de Som Bluetooth" 
-           class="present-image" 
-           onerror="this.onerror=null;this.className='present-image img-fallback'">
-      <h5>Caixa de Som Bluetooth</h5>
-      <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">Presentear</a>
+    <!-- Lightbox HTML -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <div class="lightbox-nav">
+        <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+        <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="lightbox-content">
+        <img src="" alt="" id="lightbox-image">
+      </div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
-    <div class="col-md-4 text-center">
-      <img src="imagens/maquiagem.jpg" 
-           alt="Kit Maquiagem" 
-           class="present-image" 
-           onerror="this.onerror=null;this.className='present-image img-fallback'">
-      <h5>Kit Maquiagem Profissional</h5>
-      <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">Presentear</a>
-    </div>
-    <div class="col-md-4 text-center">
-      <img src="imagens/SPA.jpg" 
-           alt="Vale Spa" 
-           class="present-image" 
-           onerror="this.onerror=null;this.className='present-image img-fallback'">
-      <h5>Vale Spa/Beleza</h5>
-      <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
-    </div>
-  </div>
-</section>
+
+    <section class="mb-5">
+      <h2 class="section-title">Lista de Presentes</h2>
+      <div class="row g-4">
+        <div class="col-md-4 text-center">
+          <img src="imagens/caixadesom.jpg" 
+               alt="Caixa de Som Bluetooth" 
+               class="present-image" 
+               onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Caixa de Som Bluetooth</h5>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">Presentear</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="imagens/maquiagem.jpg" 
+               alt="Kit Maquiagem" 
+               class="present-image" 
+               onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Kit Maquiagem Profissional</h5>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">Presentear</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="imagens/SPA.jpg" 
+               alt="Vale Spa" 
+               class="present-image" 
+               onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Vale Spa/Beleza</h5>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
+        </div>
+      </div>
+    </section>
 
     <section class="text-center my-5">
       <p>Você será redirecionado para um ambiente seguro do Mercado Pago para finalizar seu presente com Pix, Cartão de Crédito ou Débito 💳✨</p>
@@ -348,6 +434,89 @@
       }
       
       rsvpForm.addEventListener('submit', submitRSVP);
+
+      // Lightbox functionality
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.querySelector('.lightbox-close');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      
+      const galleryImages = document.querySelectorAll('.gallery img');
+      let currentImageIndex = 0;
+      
+      // Abrir lightbox quando uma imagem é clicada
+      galleryImages.forEach((img, index) => {
+        img.addEventListener('click', () => {
+          openLightbox(index);
+        });
+      });
+      
+      // Fechar lightbox
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+      
+      // Navegação entre imagens
+      prevBtn.addEventListener('click', showPrevImage);
+      nextBtn.addEventListener('click', showNextImage);
+      
+      // Navegação com teclado
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('active')) {
+          if (e.key === 'Escape') {
+            closeLightbox();
+          } else if (e.key === 'ArrowLeft') {
+            showPrevImage();
+          } else if (e.key === 'ArrowRight') {
+            showNextImage();
+          }
+        }
+      });
+      
+      function openLightbox(index) {
+        currentImageIndex = index;
+        const imgSrc = galleryImages[index].getAttribute('src');
+        const imgAlt = galleryImages[index].getAttribute('alt');
+        const imgCaption = galleryImages[index].getAttribute('data-caption') || imgAlt;
+        
+        lightboxImage.setAttribute('src', imgSrc);
+        lightboxImage.setAttribute('alt', imgAlt);
+        lightboxCaption.textContent = imgCaption;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Impede a rolagem da página
+      }
+      
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Restaura a rolagem da página
+      }
+      
+      function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        const imgSrc = galleryImages[currentImageIndex].getAttribute('src');
+        const imgAlt = galleryImages[currentImageIndex].getAttribute('alt');
+        const imgCaption = galleryImages[currentImageIndex].getAttribute('data-caption') || imgAlt;
+        
+        lightboxImage.setAttribute('src', imgSrc);
+        lightboxImage.setAttribute('alt', imgAlt);
+        lightboxCaption.textContent = imgCaption;
+      }
+      
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        const imgSrc = galleryImages[currentImageIndex].getAttribute('src');
+        const imgAlt = galleryImages[currentImageIndex].getAttribute('alt');
+        const imgCaption = galleryImages[currentImageIndex].getAttribute('data-caption') || imgAlt;
+        
+        lightboxImage.setAttribute('src', imgSrc);
+        lightboxImage.setAttribute('alt', imgAlt);
+        lightboxCaption.textContent = imgCaption;
+      }
     });
   </script>
 </body>
