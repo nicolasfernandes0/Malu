@@ -6,12 +6,12 @@
   <title>Maria Luisa - 15 Anos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
-  <!-- Font Awesome atualizado -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #fff8f5;
+      padding-top: 56px; /* Ajuste para o navbar fixo */
     }
     header {
       background: linear-gradient(to right, #f9c5d1, #fcb69f);
@@ -34,23 +34,23 @@
       position: relative;
     }
     .gallery img {
-     width: 100%;
-     height: 250px;
-     object-fit: cover;
-     object-position: center top 20%;
-     border-radius: 10px;
-     margin-bottom: 15px;
-     transition: transform 0.3s;
-     cursor: pointer;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: center top 20%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s;
+      cursor: pointer;
     }
     /* Ajuste para retratos verticais */
     .gallery .portrait {
-    object-position: center 30%;
+      object-position: center 30%;
     }
 
     /* Ajuste para fotos em grupo */
     .gallery .group-photo {
-    object-position: center 40%;
+      object-position: center 40%;
     }
     .gallery img:hover {
       transform: scale(1.03);
@@ -184,28 +184,116 @@
       color: white;
       font-size: 18px;
     }
+    .countdown-section {
+      background-color: #fff0ec;
+      border-top: 2px solid #fcb69f;
+      border-bottom: 2px solid #fcb69f;
+    }
+
+    #countdown div {
+      padding: 10px 20px;
+      background: #f9c5d1;
+      color: white;
+      border-radius: 10px;
+      min-width: 100px;
+    }
+    .btn-outline-danger {
+      border-color: #fcb69f;
+      color: #fcb69f;
+    }
+    .btn-outline-danger:hover {
+      background-color: #fcb69f;
+      color: white;
+    }
+
+    /* Estilos para o botão de música flutuante */
+    .music-button-fixed {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 1050; /* Garante que fique acima do navbar */
+    }
+    .navbar-brand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8em;
+      color: #e38b87 !important;
+    }
+    .navbar .nav-link {
+      color: #e38b87 !important;
+    }
+    .navbar .nav-link:hover {
+      color: #f9c5d1 !important;
+    }
+    .small-transparent-text {
+        font-size: 0.8em;
+        opacity: 0.6;
+        color: #6c757d;
+    }
   </style>
 </head>
 <body>
-  <header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#top">Maria Luisa 15 Anos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#sobre-mim">Sobre Mim</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#confirmacao-presenca">Confirmação</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#galeria">Galeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#lista-presentes">Presentes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#localizacao">Localização</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header id="top">
     <h1>Maria Luisa - 15 Anos</h1>
-    <p>12 de Julho de 2026 | Salão Bella Festa | 20h</p>
+    <p>12 de Julho de 2026   | Casa Helenya | 10:30h</p>
   </header>
 
+  <div class="music-button-fixed">
+    <button onclick="toggleMusic()" class="btn btn-outline-danger rounded-circle p-3">
+      <i id="music-icon" class="fas fa-music"></i>
+    </button>
+  </div>
+  
+  <section class="countdown-section text-center py-4">
+    <h2 class="section-title">Faltam</h2>
+    <div id="countdown" class="d-flex justify-content-center gap-4 fs-4 fw-bold text-danger"></div>
+  </section>
+
   <div class="container my-5">
-    <section class="mb-5">
+    <section id="sobre-mim" class="mb-5">
       <h2 class="section-title">Sobre Mim</h2>
       <p class="text-center">Olá! Eu sou a Maria Luisa. Estou muito feliz em comemorar esse momento tão especial com você. Amo música, dança, estar com meus amigos e minha família. Será uma noite mágica!</p>
     </section>
 
-    <section class="mb-5">
+    <section id="confirmacao-presenca" class="mb-5">
       <h2 class="section-title">Confirmação de Presença</h2>
       <form id="rsvp-form" class="mx-auto" style="max-width: 500px;">
         <div class="mb-3">
           <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
         </div>
         <div class="mb-3">
-          <input type="number" class="form-control" id="acompanhantes" placeholder="Número de acompanhantes" required min="0">
+        <input type="number" class="form-control" id="acompanhantes" placeholder="Número de acompanhantes (incluindo você)" required min="0">
+        </div>
+        <div class="mb-3">
+        <textarea class="form-control" id="nomesAcompanhantes" rows="2" placeholder="Nome dos acompanhantes (incluindo você)"></textarea>
+        <p class="small-transparent-text">Coloque apenas os nomes dos convidados que constam no convite recebido.</p>
         </div>
         <button type="submit" class="btn w-100" style="background-color:#f9c5d1; color: white;">Confirmar Presença</button>
       </form>
@@ -228,7 +316,7 @@
       </div>
     </section>
 
-    <section class="mb-5">
+    <section id="galeria" class="mb-5">
       <h2 class="section-title">Galeria</h2>
       <div class="row gallery">
         <div class="col-md-4">
@@ -261,9 +349,8 @@
       </div>
     </section>
 
-    <!-- Lightbox HTML -->
     <div class="lightbox" id="lightbox">
-      <span class="lightbox-close">&times;</span>
+      <span class="lightbox-close">×</span>
       <div class="lightbox-nav">
         <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
         <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
@@ -274,31 +361,61 @@
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <section class="mb-5">
+    <section id="lista-presentes" class="mb-5">
       <h2 class="section-title">Lista de Presentes</h2>
       <div class="row g-4">
         <div class="col-md-4 text-center">
           <img src="imagens/caixadesom.jpg" 
-               alt="Caixa de Som Bluetooth" 
-               class="present-image" 
-               onerror="this.onerror=null;this.className='present-image img-fallback'">
+                alt="Caixa de Som Bluetooth" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
           <h5>Caixa de Som Bluetooth</h5>
+          <h5>R$60,00</h5>
           <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">Presentear</a>
         </div>
         <div class="col-md-4 text-center">
           <img src="imagens/maquiagem.jpg" 
-               alt="Kit Maquiagem" 
-               class="present-image" 
-               onerror="this.onerror=null;this.className='present-image img-fallback'">
+                alt="Kit Maquiagem" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
           <h5>Kit Maquiagem Profissional</h5>
+          <h5>R$100,00</h5>
           <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">Presentear</a>
         </div>
         <div class="col-md-4 text-center">
           <img src="imagens/SPA.jpg" 
-               alt="Vale Spa" 
-               class="present-image" 
-               onerror="this.onerror=null;this.className='present-image img-fallback'">
+                alt="Vale Spa" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
           <h5>Vale Spa/Beleza</h5>
+          <h5>R$200,00</h5>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="imagens/SPA.jpg" 
+                alt="Vale Spa" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Vale Spa/Beleza</h5>
+          <h5>R$200,00</h5>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="imagens/SPA.jpg" 
+                alt="Vale Spa" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Vale Spa/Beleza</h5>
+          <h5>R$200,00</h5>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <img src="imagens/SPA.jpg" 
+                alt="Vale Spa" 
+                class="present-image" 
+                onerror="this.onerror=null;this.className='present-image img-fallback'">
+          <h5>Vale Spa/Beleza</h5>
+          <h5>R$200,00</h5>
           <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
         </div>
       </div>
@@ -308,23 +425,23 @@
       <p>Você será redirecionado para um ambiente seguro do Mercado Pago para finalizar seu presente com Pix, Cartão de Crédito ou Débito 💳✨</p>
     </section>
 
-    <section class="mb-5">
+    <section id="localizacao" class="mb-5">
       <h2 class="section-title">Localização</h2>
       <div class="local-info">
-        <h3 class="text-center mb-3">Salão Bella Festa</h3>
+        <h3 class="text-center mb-3">Casa Helenya | Buffet Evento Perfeito</h3>
         <p class="text-center mb-4">
-          <i class="fas fa-map-marker-alt"></i> Rua São Paulo, 323 - Taboão<br>
+          <i class="fas fa-map-marker-alt"></i> Av. Paes de Barros, 3670 - Vila Prudente<br>
           São Paulo - SP<br>
-          CEP: 09668-010
+          CEP: 03149-000
         </p>
         
         <div id="map"></div>
         
         <div class="text-center mt-3">
-          <a href="https://www.google.com/maps/place/R.+S%C3%A3o+Paulo,+323+-+Vila+Santa+Luzia,+S%C3%A3o+Bernardo+do+Campo+-+SP,+09668-010/@-23.6657338,-46.6141155,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce44b869ac45e5:0x241eeefa12e66084!8m2!3d-23.6657338!4d-46.6115406!16s%2Fg%2F11lmp40bjh?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" 
-             target="_blank" 
-             class="btn btn-primary">
-             <i class="fas fa-directions"></i> Obter Direções
+          <a href="https://www.google.com/maps/place/Casa+Helenya+%7C+Buffet+Evento+Perfeito/@-23.5829827,-46.5867662,637m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94ce5d00291e2d03:0xe4522c4005f59aed!8m2!3d-23.5829827!4d-46.5867662!16s%2Fg%2F11wvcwhp01?entry=ttu&g_ep=EgoyMDI1MDcwNi4wIKXMDSoASAFQAw%3D%3D" 
+              target="_blank" 
+              class="btn btn-primary">
+              <i class="fas fa-directions"></i> Obter Direções
           </a>
         </div>
       </div>
@@ -335,38 +452,12 @@
     <p>Com amor, Maria Luisa 💖</p>
   </footer>
 
-  <!-- Scripts atualizados -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
-  <!-- Mapbox GL JS -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
   
-  <script>
-    // Inicializar o Mapbox
-    mapboxgl.accessToken = 'pk.eyJ1Ijoibmljb2xhc2Zlcm5hbmRlczEyIiwiYSI6ImNtY2FyYWQzZzA2dnAycnB5bnpwNDh2bG0ifQ.hOwCFxFUS3nA93ttayqEyg';
-    
-    // Coordenadas do Salão Bella Festa
-    const salao = [-46.611535235582195, -23.665665013985002]; // [longitude, latitude]
-    
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: salao,
-      zoom: 15
-    });
-    
-    // Adicionar controles de navegação
-    map.addControl(new mapboxgl.NavigationControl());
-    
-    // Criar um marcador personalizado
-    const marker = new mapboxgl.Marker({
-      color: '#f9c5d1'
-    })
-      .setLngLat(salao)
-      .setPopup(new mapboxgl.Popup().setHTML('<h5>Salão Bella Festa</h5><p>Local da festa de 15 anos da Maria Luisa</p>'))
-      .addTo(map);
-  </script>
+c
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -382,6 +473,7 @@
         e.preventDefault();
         const nome = document.getElementById('nome').value.trim();
         const acompanhantes = document.getElementById('acompanhantes').value;
+        const nomesAcompanhantes = document.getElementById('nomesAcompanhantes').value.trim();
         
         if (!nome || isNaN(acompanhantes) || acompanhantes < 0) {
           showMessage('Por favor, preencha todos os campos corretamente.', 'error');
@@ -400,6 +492,7 @@
             body: JSON.stringify({
               Nome: nome,
               Acompanhantes: acompanhantes,
+              "Nomes dos Acompanhantes": nomesAcompanhantes,
               Data: new Date().toLocaleString('pt-BR'),
               Origem: 'Site Aniversário'
             })
@@ -426,7 +519,7 @@
       function showMessage(message, type) {
         msgConfirmacao.textContent = message;
         msgConfirmacao.style.color = type === 'error' ? '#e74c3c' : 
-                                   type === 'success' ? '#27ae60' : '#2c3e50';
+                                     type === 'success' ? '#27ae60' : '#2c3e50';
       }
       
       function showFallback() {
@@ -519,5 +612,53 @@
       }
     });
   </script>
+  <script>
+  function atualizarContagem() {
+    const evento = new Date("July 12, 2026 10:30:00").getTime();
+    const agora = new Date().getTime();
+    const distancia = evento - agora;
+
+    if (distancia <= 0) {
+      document.getElementById("countdown").innerHTML = "<div>É HOJE! 🎉</div>";
+      return;
+    }
+
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      `<div>${dias}<br><small>dias</small></div>` +
+      `<div>${horas}<br><small>horas</small></div>` +
+      `<div>${minutos}<br><small>min</small></div>` +
+      `<div>${segundos}<br><small>seg</small></div>`;
+  }
+
+  setInterval(atualizarContagem, 1000);
+  atualizarContagem(); // iniciar imediatamente
+  </script>
+<audio id="musicaFesta" loop>
+  <source src="musicas/musica.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio HTML5.
+</audio>
+<script>
+  const musicaFesta = document.getElementById('musicaFesta');
+  const musicIcon = document.getElementById('music-icon');
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (isPlaying) {
+      musicaFesta.pause();
+      musicIcon.classList.remove('fa-pause');
+      musicIcon.classList.add('fa-music');
+    } else {
+      musicaFesta.play();
+      musicIcon.classList.remove('fa-music');
+      musicIcon.classList.add('fa-pause');
+    }
+    isPlaying = !isPlaying;
+  }
+</script>
 </body>
 </html>
