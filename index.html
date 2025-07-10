@@ -7,11 +7,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" >
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
   <style>
     body {
       font-family: 'Open Sans', sans-serif;
       background-color: #fff8f5;
-      padding-top: 56px; /* Ajuste para o navbar fixo */
+      padding-top: 56px; /* Ajuste para o navbar fixo, que geralmente tem 56px de altura */
+      scroll-padding-top: 75px; /* Adicione esta linha! Valor maior que a altura do navbar */
+    }
+     html { /* Adicione esta regra para garantir maior compatibilidade */
+        scroll-behavior: smooth; /* Para uma rolagem suave ao clicar nos links */
+        scroll-padding-top: 75px; /* Repita ou use apenas aqui, geralmente é mais robusto na tag html */
     }
     header {
       background: linear-gradient(to right, #f9c5d1, #fcb69f);
@@ -211,8 +218,23 @@
       position: fixed;
       top: 15px;
       right: 15px;
-      z-index: 1050; /* Garante que fique acima do navbar */
+      z-index: 1050; /* Z-index padrão alto para telas maiores */
     }
+
+    /* Ajuste para telas menores (celulares) */
+    @media (max-width: 991.98px) { /* Ponto de interrupção padrão do Bootstrap para 'lg' */
+      .music-button-fixed {
+        top: auto; /* Remove o 'top' fixo */
+        bottom: 15px; /* Fixa na parte inferior */
+        left: 15px; /* Fixa na parte esquerda para não conflitar com o menu e facilitar o acesso com o polegar */
+        right: auto; /* Remove o 'right' fixo */
+        z-index: 1040; /* Um pouco abaixo do navbar para não atrapalhar, mas ainda visível */
+      }
+      .navbar-toggler {
+        z-index: 1051; /* Garante que o ícone do menu esteja acima de tudo */
+      }
+    }
+
     .navbar-brand {
       font-family: 'Great Vibes', cursive;
       font-size: 1.8em;
@@ -229,6 +251,10 @@
         opacity: 0.6;
         color: #6c757d;
     }
+    /* Z-index do navbar para garantir que ele fique acima do botão de música */
+    .navbar {
+      z-index: 1050; 
+    }
   </style>
 </head>
 <body>
@@ -241,19 +267,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#sobre-mim">Sobre Mim</a>
+            <a class="nav-link" href="#sobre-mim-section">Sobre Mim</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#confirmacao-presenca">Confirmação</a>
+            <a class="nav-link" href="#confirmacao-presenca-section">Confirmação</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#galeria">Galeria</a>
+            <a class="nav-link" href="#galeria-section">Galeria</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#lista-presentes">Presentes</a>
+            <a class="nav-link" href="#lista-presentes-section">Presentes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#localizacao">Localização</a>
+            <a class="nav-link" href="#localizacao-section">Localização</a>
           </li>
         </ul>
       </div>
@@ -262,7 +288,7 @@
 
   <header id="top">
     <h1>Maria Luisa - 15 Anos</h1>
-    <p>12 de Julho de 2026   | Casa Helenya | 10:30h</p>
+    <p>12 de Julho de 2026 | Casa Helenya | 10:30h</p>
   </header>
 
   <div class="music-button-fixed">
@@ -277,12 +303,24 @@
   </section>
 
   <div class="container my-5">
-    <section id="sobre-mim" class="mb-5">
+    <section id="sobre-mim-section" class="mb-5">
       <h2 class="section-title">Sobre Mim</h2>
-      <p class="text-center">Olá! Eu sou a Maria Luisa. Estou muito feliz em comemorar esse momento tão especial com você. Amo música, dança, estar com meus amigos e minha família. Será uma noite mágica!</p>
+      <p class="text-center">Oi, gente! Eu sou a Malu — aquela que vive sonhando alto, rindo à toa, cantando músicas do nada e enchendo o rolo da câmera com mil fotos (quase nenhuma postada 😅).
+
+Fazer 15 anos é muito mais do que uma data: é uma mistura de emoção, alegria, nervosismo e muuuita ansiedade pra esse dia tão esperado!
+É o começo de uma nova fase, com mais sonhos, mais liberdade e, claro, mais responsabilidade (ou pelo menos é o que dizem, né? rs).
+
+Tô super feliz por poder comemorar esse momento com pessoas incríveis — e isso inclui você! 💖
+Obrigada por estar aqui e por fazer parte dessa etapa tão especial da minha vida. Agora... bora curtir, porque a festa vai ser inesquecível! 🎉
+
+Beijos,
+Maria Luisa</p>
+      <p class="text-center small-transparent-text">*Texto escrito por Maria Luisa*</p>
+      <p class="text-center">"A vida é feita de momentos, e eu quero viver cada um deles intensamente!"
+</p>
     </section>
 
-    <section id="confirmacao-presenca" class="mb-5">
+    <section id="confirmacao-presenca-section" class="mb-5">
       <h2 class="section-title">Confirmação de Presença</h2>
       <form id="rsvp-form" class="mx-auto" style="max-width: 500px;">
         <div class="mb-3">
@@ -294,6 +332,10 @@
         <div class="mb-3">
         <textarea class="form-control" id="nomesAcompanhantes" rows="2" placeholder="Nome dos acompanhantes (incluindo você)"></textarea>
         <p class="small-transparent-text">Coloque apenas os nomes dos convidados que constam no convite recebido.</p>
+        </div>
+        <div class="mb-3">
+          <label for="recado" class="form-label">Deixe um recado para a Maria Luisa (opcional):</label>
+          <textarea class="form-control" id="recado" rows="3" placeholder="Escreva seu recado aqui!"></textarea>
         </div>
         <button type="submit" class="btn w-100" style="background-color:#f9c5d1; color: white;">Confirmar Presença</button>
       </form>
@@ -316,7 +358,7 @@
       </div>
     </section>
 
-    <section id="galeria" class="mb-5">
+    <section id="galeria-section" class="mb-5">
       <h2 class="section-title">Galeria</h2>
       <div class="row gallery">
         <div class="col-md-4">
@@ -334,19 +376,37 @@
         <div class="col-md-4">
           <img src="imagens/4.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
-        <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
-        <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
-        <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
-        <div class="col-md-4">
-          <img src="" class="img-fluid" alt="Foto de ensaio" data-caption="Ensaio fotográfico" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
         </div>
-      </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+                <div class="col-md-4">
+          <img src="imagens/5.jpg" class="img-fluid" alt="Foto de infância" data-caption="Com a família" onerror="this.onerror=null;this.className='img-fallback';this.alt='Imagem não carregada'">
+        </div>
+        </div>
     </section>
 
     <div class="lightbox" id="lightbox">
@@ -361,14 +421,14 @@
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <section id="lista-presentes" class="mb-5">
+    <section id="lista-presentes-section" class="mb-5">
       <h2 class="section-title">Lista de Presentes</h2>
       <div class="row g-4">
         <div class="col-md-4 text-center">
           <img src="imagens/caixadesom.jpg" 
                 alt="Caixa de Som Bluetooth" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Caixa de Som Bluetooth</h5>
           <h5>R$60,00</h5>
           <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">Presentear</a>
@@ -377,7 +437,7 @@
           <img src="imagens/maquiagem.jpg" 
                 alt="Kit Maquiagem" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Kit Maquiagem Profissional</h5>
           <h5>R$100,00</h5>
           <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">Presentear</a>
@@ -386,7 +446,7 @@
           <img src="imagens/SPA.jpg" 
                 alt="Vale Spa" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Vale Spa/Beleza</h5>
           <h5>R$200,00</h5>
           <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
@@ -395,7 +455,7 @@
           <img src="imagens/SPA.jpg" 
                 alt="Vale Spa" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Vale Spa/Beleza</h5>
           <h5>R$200,00</h5>
           <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
@@ -404,7 +464,7 @@
           <img src="imagens/SPA.jpg" 
                 alt="Vale Spa" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Vale Spa/Beleza</h5>
           <h5>R$200,00</h5>
           <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
@@ -413,7 +473,7 @@
           <img src="imagens/SPA.jpg" 
                 alt="Vale Spa" 
                 class="present-image" 
-                onerror="this.onerror=null;this.className='present-image img-fallback'">
+                onerror="this.onerror=null;this.className='present-image img-fallback'; this.alt='Imagem não carregada'">
           <h5>Vale Spa/Beleza</h5>
           <h5>R$200,00</h5>
           <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">Presentear</a>
@@ -425,7 +485,7 @@
       <p>Você será redirecionado para um ambiente seguro do Mercado Pago para finalizar seu presente com Pix, Cartão de Crédito ou Débito 💳✨</p>
     </section>
 
-    <section id="localizacao" class="mb-5">
+    <section id="localizacao-section" class="mb-5">
       <h2 class="section-title">Localização</h2>
       <div class="local-info">
         <h3 class="text-center mb-3">Casa Helenya | Buffet Evento Perfeito</h3>
@@ -438,7 +498,7 @@
         <div id="map"></div>
         
         <div class="text-center mt-3">
-          <a href="https://www.google.com/maps/place/Casa+Helenya+%7C+Buffet+Evento+Perfeito/@-23.5829827,-46.5867662,637m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94ce5d00291e2d03:0xe4522c4005f59aed!8m2!3d-23.5829827!4d-46.5867662!16s%2Fg%2F11wvcwhp01?entry=ttu&g_ep=EgoyMDI1MDcwNi4wIKXMDSoASAFQAw%3D%3D" 
+          <a id="get-directions-btn" href="#" 
               target="_blank" 
               class="btn btn-primary">
               <i class="fas fa-directions"></i> Obter Direções
@@ -452,19 +512,28 @@
     <p>Com amor, Maria Luisa 💖</p>
   </footer>
 
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-  
-c
-  
+  <audio id="musicaFesta" loop>
+    <source src="musicas/musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+
   <script>
+    // ** IMPORTANTE: Substitua com seu Token de Acesso Público do Mapbox **
+    // Obtenha um em https://account.mapbox.com/access-tokens/
+    mapboxgl.accessToken = 'pk.eyJ1Ijoibmljb2xhc2Zlcm5hbmRlczEyIiwiYSI6ImNtY3dsZGNrNzAyMGkybHB1OWN0ODkwMTQifQ.-K168UuY3iggPhhV_Xsu9Q'; 
+
     document.addEventListener('DOMContentLoaded', function() {
       const rsvpForm = document.getElementById('rsvp-form');
       const msgConfirmacao = document.getElementById('msg-confirmacao');
       const fallbackForm = document.getElementById('fallback-form');
-      
+      const getDirectionsBtn = document.getElementById('get-directions-btn');
+
+      // Coordenadas do local para o Mapbox (aproximadas para Av. Paes de Barros, 3670)
+      const venueCoords = [-46.5912, -23.5794]; // Longitude, Latitude
+
       if(localStorage.getItem('formFailed')) {
         showFallback();
       }
@@ -474,9 +543,10 @@ c
         const nome = document.getElementById('nome').value.trim();
         const acompanhantes = document.getElementById('acompanhantes').value;
         const nomesAcompanhantes = document.getElementById('nomesAcompanhantes').value.trim();
+        const recado = document.getElementById('recado').value.trim(); // Novo campo de recado
         
         if (!nome || isNaN(acompanhantes) || acompanhantes < 0) {
-          showMessage('Por favor, preencha todos os campos corretamente.', 'error');
+          showMessage('Por favor, preencha todos os campos obrigatórios corretamente.', 'error');
           return;
         }
         
@@ -493,6 +563,7 @@ c
               Nome: nome,
               Acompanhantes: acompanhantes,
               "Nomes dos Acompanhantes": nomesAcompanhantes,
+              Recado: recado, // Adiciona o recado ao payload
               Data: new Date().toLocaleString('pt-BR'),
               Origem: 'Site Aniversário'
             })
@@ -504,7 +575,11 @@ c
           
           localStorage.removeItem('formFailed');
           
-          showMessage(`Obrigada, ${nome}! Sua presença foi confirmada com ${acompanhantes} acompanhante(s).`, 'success');
+          let successMessage = `Obrigada, ${nome}! Sua presença foi confirmada com ${acompanhantes} acompanhante(s).`;
+          if (recado) {
+            successMessage += ' Seu recado foi enviado com sucesso!';
+          }
+          showMessage(successMessage, 'success');
           rsvpForm.reset();
           
         } catch (error) {
@@ -519,7 +594,7 @@ c
       function showMessage(message, type) {
         msgConfirmacao.textContent = message;
         msgConfirmacao.style.color = type === 'error' ? '#e74c3c' : 
-                                     type === 'success' ? '#27ae60' : '#2c3e50';
+                                      type === 'success' ? '#27ae60' : '#2c3e50';
       }
       
       function showFallback() {
@@ -536,7 +611,7 @@ c
       const prevBtn = document.getElementById('prev-btn');
       const nextBtn = document.getElementById('next-btn');
       
-      const galleryImages = document.querySelectorAll('.gallery img');
+      const galleryImages = document.querySelectorAll('.gallery img'); // Note: This now only selects the actual images
       let currentImageIndex = 0;
       
       // Abrir lightbox quando uma imagem é clicada
@@ -610,55 +685,72 @@ c
         lightboxImage.setAttribute('alt', imgAlt);
         lightboxCaption.textContent = imgCaption;
       }
+
+      // Inicializar o mapa do Mapbox
+      const map = new mapboxgl.Map({
+        container: 'map', // ID do container
+        style: 'mapbox://styles/mapbox/streets-v11', // URL do estilo
+        center: venueCoords, // posição inicial [lng, lat]
+        zoom: 15 // zoom inicial
+      });
+
+      // Adicionar um marcador ao mapa
+      new mapboxgl.Marker()
+        .setLngLat(venueCoords)
+        .setPopup(new mapboxgl.Popup().setHTML("<h3>Casa Helenya</h3><p>Av. Paes de Barros, 3670</p>")) // adicionar pop-up
+        .addTo(map);
+
+      // Definir o link de direções do Google Maps
+      // Corrigido para um link de direções do Google Maps válido
+      getDirectionsBtn.href = `http://maps.google.com/maps?q=${venueCoords[1]},${venueCoords[0]}&travelmode=driving`;
+      
+      // Tocar Música
+      const musicaFesta = document.getElementById('musicaFesta');
+      const musicIcon = document.getElementById('music-icon');
+      let isPlaying = false;
+
+      function toggleMusic() {
+        if (isPlaying) {
+          musicaFesta.pause();
+          musicIcon.classList.remove('fa-pause');
+          musicIcon.classList.add('fa-music');
+        } else {
+          musicaFesta.play();
+          musicIcon.classList.remove('fa-music');
+          musicIcon.classList.add('fa-pause');
+        }
+        isPlaying = !isPlaying;
+      }
+      // Tornar toggleMusic acessível globalmente
+      window.toggleMusic = toggleMusic;
     });
-  </script>
-  <script>
-  function atualizarContagem() {
-    const evento = new Date("July 12, 2026 10:30:00").getTime();
-    const agora = new Date().getTime();
-    const distancia = evento - agora;
 
-    if (distancia <= 0) {
-      document.getElementById("countdown").innerHTML = "<div>É HOJE! 🎉</div>";
-      return;
+    // Contador regressivo
+    function atualizarContagem() {
+      // Ajustado para o fuso horário de São Bernardo do Campo, SP (GMT-3)
+      const evento = new Date("July 12, 2026 10:30:00 GMT-0300").getTime(); 
+      const agora = new Date().getTime();
+      const distancia = evento - agora;
+
+      if (distancia <= 0) {
+        document.getElementById("countdown").innerHTML = "<div>É HOJE! 🎉</div>";
+        return;
+      }
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `<div>${dias}<br><small>dias</small></div>` +
+        `<div>${horas}<br><small>horas</small></div>` +
+        `<div>${minutos}<br><small>min</small></div>` +
+        `<div>${segundos}<br><small>seg</small></div>`;
     }
 
-    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-      `<div>${dias}<br><small>dias</small></div>` +
-      `<div>${horas}<br><small>horas</small></div>` +
-      `<div>${minutos}<br><small>min</small></div>` +
-      `<div>${segundos}<br><small>seg</small></div>`;
-  }
-
-  setInterval(atualizarContagem, 1000);
-  atualizarContagem(); // iniciar imediatamente
+    setInterval(atualizarContagem, 1000);
+    atualizarContagem(); // iniciar imediatamente
   </script>
-<audio id="musicaFesta" loop>
-  <source src="musicas/musica.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio HTML5.
-</audio>
-<script>
-  const musicaFesta = document.getElementById('musicaFesta');
-  const musicIcon = document.getElementById('music-icon');
-  let isPlaying = false;
-
-  function toggleMusic() {
-    if (isPlaying) {
-      musicaFesta.pause();
-      musicIcon.classList.remove('fa-pause');
-      musicIcon.classList.add('fa-music');
-    } else {
-      musicaFesta.play();
-      musicIcon.classList.remove('fa-music');
-      musicIcon.classList.add('fa-pause');
-    }
-    isPlaying = !isPlaying;
-  }
-</script>
 </body>
 </html>
