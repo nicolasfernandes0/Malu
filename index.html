@@ -196,6 +196,15 @@
       border-top: 2px solid #fcb69f;
       border-bottom: 2px solid #fcb69f;
     }
+    #countdown {
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    #countdown div {
+      flex: 1 1 100px;
+      min-width: 80px;
+      text-align: center;
+    }
 
     #countdown div {
       padding: 10px 20px;
@@ -222,7 +231,7 @@
     }
 
     /* Ajuste para telas menores (celulares) */
-    @media (max-width: 991.98px) { /* Ponto de interrupção padrão do Bootstrap para 'lg' */
+    @media (max-width: 575.98px) { /* Ponto de interrupção padrão do Bootstrap para 'lg' */
       .music-button-fixed {
         top: auto; /* Remove o 'top' fixo */
         bottom: 15px; /* Fixa na parte inferior */
