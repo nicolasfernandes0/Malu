@@ -18,263 +18,283 @@ body {
   scroll-padding-top: 75px;
 }
 
-
-     html { /* Adicione esta regra para garantir maior compatibilidade */
-        scroll-behavior: smooth; /* Para uma rolagem suave ao clicar nos links */
-        scroll-padding-top: 75px; /* Repita ou use apenas aqui, geralmente é mais robusto na tag html */
-    }
-    header {
-      background: url('imagens/tapete.jpg') no-repeat center center fixed;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-    }
-    header h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3em;
-    }
-    .section-title {
-      font-size: 2.5em;
-      font-family: 'Great Vibes', cursive;
-      color: #e38b87;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-.section-box {
-  background-color: white;      /* Fundo branco */
-  padding: 30px;                /* Espaço interno */
-  border-radius: 15px;          /* Cantos arredondados */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave */
-  margin-bottom: 40px;          /* Espaço entre seções */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
 }
-    .gallery {
-      position: relative;
-    }
-    .gallery img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      object-position: center top 20%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-    /* Ajuste para retratos verticais */
-    .gallery .portrait {
-      object-position: center 30%;
-    }
 
-    /* Ajuste para fotos em grupo */
-    .gallery .group-photo {
-      object-position: center 40%;
-    }
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    .present-image {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      height: 200px;
-      object-fit: cover;
-    }
-    footer {
-      background-color: #fcb69f;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    .img-fallback {
-      background-color: #f9c5d1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      height: 300px;
-    }
-    #fallback-form {
-      display: none;
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #f8f9fa;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .btn-whatsapp {
-      background-color: #25D366;
-      color: white;
-    }
-    .btn-whatsapp:hover {
-      background-color: #128C7E;
-      color: white;
-    }
-    #map {
-      height: 400px;
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-    .local-info {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-    .mapboxgl-marker {
-      background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
-      background-size: cover;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    
-    /* Lightbox styles */
-    .lightbox {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .lightbox.active {
-      display: flex;
-    }
-    .lightbox-content {
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .lightbox-content img {
-      max-width: 100%;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 5px;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 40px;
-      cursor: pointer;
-    }
-    .lightbox-nav {
-      position: absolute;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
-    .lightbox-nav button {
-      background: rgba(255, 255, 255, 0.3);
-      border: none;
-      color: white;
-      font-size: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox-nav button:hover {
-      background: rgba(255, 255, 255, 0.5);
-    }
-    .lightbox-caption {
-      position: absolute;
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      color: white;
-      font-size: 18px;
-    }
-    .countdown-section {
-      background-color: #fff0ec;
-      border-top: 2px solid #fcb69f;
-      border-bottom: 2px solid #fcb69f;
-    }
-    #countdown {
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    #countdown div {
-      flex: 1 1 100px;
-      min-width: 80px;
-      text-align: center;
-    }
+header {
+  background: url('imagens/tapete.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
 
-    #countdown div {
-      padding: 10px 20px;
-      background: #f9c5d1;
-      color: white;
-      border-radius: 10px;
-      min-width: 100px;
-    }
-    .btn-outline-danger {
-      border-color: #fcb69f;
-      color: #fcb69f;
-    }
-    .btn-outline-danger:hover {
-      background-color: #fcb69f;
-      color: white;
-    }
+/* --------- Ajuste para celulares --------- */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll; /* Evita bug no mobile */
+    background-position: center top; /* Mantém o foco no topo */
+  }
 
-    /* Estilos para o botão de música flutuante */
-    .music-button-fixed {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      z-index: 1050; /* Z-index padrão alto para telas maiores */
-    }
+  header {
+    background-attachment: scroll;
+    background-position: center top;
+    padding: 40px 15px; /* Deixa o header mais proporcional */
+  }
+}
+.section-title {
+  font-size: 2.5em;
+  font-family: 'Great Vibes', cursive;
+  color: #e38b87;
+  margin-bottom: 20px;
+  text-align: center;
+}
 
-    /* Ajuste para telas menores (celulares) */
-    @media (max-width: 575.98px) { /* Ponto de interrupção padrão do Bootstrap para 'lg' */
-      .music-button-fixed {
-        top: auto; /* Remove o 'top' fixo */
-        bottom: 15px; /* Fixa na parte inferior */
-        left: 15px; /* Fixa na parte esquerda para não conflitar com o menu e facilitar o acesso com o polegar */
-        right: auto; /* Remove o 'right' fixo */
-        z-index: 1040; /* Um pouco abaixo do navbar para não atrapalhar, mas ainda visível */
-      }
-      .navbar-toggler {
-        z-index: 1051; /* Garante que o ícone do menu esteja acima de tudo */
-      }
-    }
+.section-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 40px;
+}
 
-    .navbar-brand {
-      font-family: 'Great Vibes', cursive;
-      font-size: 1.8em;
-      color: #e38b87 !important;
-    }
-    .navbar .nav-link {
-      color: #e38b87 !important;
-    }
-    .navbar .nav-link:hover {
-      color: #f9c5d1 !important;
-    }
-    .small-transparent-text {
-        font-size: 0.8em;
-        opacity: 0.6;
-        color: #6c757d;
-    }
-    /* Z-index do navbar para garantir que ele fique acima do botão de música */
-    .navbar {
-      z-index: 1050; 
-    }
-  </style>
+.gallery {
+  position: relative;
+}
+
+.gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center top 20%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery .portrait {
+  object-position: center 30%;
+}
+
+.gallery .group-photo {
+  object-position: center 40%;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.present-image {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  height: 200px;
+  object-fit: cover;
+}
+
+footer {
+  background-color: #fcb69f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.img-fallback {
+  background-color: #f9c5d1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  height: 300px;
+}
+
+#fallback-form {
+  display: none;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+.btn-whatsapp:hover {
+  background-color: #128C7E;
+  color: white;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.local-info {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.mapboxgl-marker {
+  background-image: url('https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox.active { display: flex; }
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 5px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 30px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+.lightbox-nav {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.lightbox-nav button {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  font-size: 30px;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-nav button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.lightbox-caption {
+  position: absolute;
+  bottom: 20px; left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+
+.countdown-section {
+  background-color: #fff0ec;
+  border-top: 2px solid #fcb69f;
+  border-bottom: 2px solid #fcb69f;
+}
+
+#countdown {
+  flex-wrap: wrap;
+  gap: 15px;
+}
+#countdown div {
+  flex: 1 1 100px;
+  min-width: 80px;
+  text-align: center;
+}
+#countdown div {
+  padding: 10px 20px;
+  background: #f9c5d1;
+  color: white;
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.btn-outline-danger {
+  border-color: #fcb69f;
+  color: #fcb69f;
+}
+.btn-outline-danger:hover {
+  background-color: #fcb69f;
+  color: white;
+}
+
+/* Botão de música flutuante */
+.music-button-fixed {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1050;
+}
+
+/* Ajuste mobile */
+@media (max-width: 575.98px) {
+  .music-button-fixed {
+    top: auto;
+    bottom: 15px;
+    left: 15px;
+    right: auto;
+    z-index: 1040;
+  }
+  .navbar-toggler {
+    z-index: 1051;
+  }
+}
+
+.navbar-brand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8em;
+  color: #e38b87 !important;
+}
+.navbar .nav-link {
+  color: #e38b87 !important;
+}
+.navbar .nav-link:hover {
+  color: #f9c5d1 !important;
+}
+
+.small-transparent-text {
+  font-size: 0.8em;
+  opacity: 0.6;
+  color: #6c757d;
+}
+
+/* Navbar acima do botão */
+.navbar {
+  z-index: 1050;
+}
+</style>
+
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
