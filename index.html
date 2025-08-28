@@ -10,12 +10,15 @@
   <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" >
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
   <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #fff8f5;
-      padding-top: 56px; /* Ajuste para o navbar fixo, que geralmente tem 56px de altura */
-      scroll-padding-top: 75px; /* Adicione esta linha! Valor maior que a altura do navbar */
-    }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: url('imagens/tapete.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 56px;
+  scroll-padding-top: 75px;
+}
+
+
      html { /* Adicione esta regra para garantir maior compatibilidade */
         scroll-behavior: smooth; /* Para uma rolagem suave ao clicar nos links */
         scroll-padding-top: 75px; /* Repita ou use apenas aqui, geralmente é mais robusto na tag html */
@@ -37,6 +40,13 @@
       margin-bottom: 20px;
       text-align: center;
     }
+.section-box {
+  background-color: white;      /* Fundo branco */
+  padding: 30px;                /* Espaço interno */
+  border-radius: 15px;          /* Cantos arredondados */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Sombra suave */
+  margin-bottom: 40px;          /* Espaço entre seções */
+}
     .gallery {
       position: relative;
     }
@@ -312,7 +322,7 @@
   </section>
 
   <div class="container my-5">
-    <section id="sobre-mim-section" class="mb-5">
+    <section id="sobre-mim-section" class="section-box mb-5">
       <h2 class="section-title">Sobre Mim</h2>
       <p class="text-center">Oi, gente! Eu sou a Malu — aquela que vive sonhando alto, rindo à toa, cantando músicas do nada e enchendo o rolo da câmera com mil fotos (quase nenhuma postada 😅).
 
@@ -329,7 +339,7 @@ Maria Luisa</p>
 </p>
     </section>
 
-    <section id="confirmacao-presenca-section" class="mb-5">
+    <section id="confirmacao-presenca-section" class="section-box mb-5">
       <h2 class="section-title">Confirmação de Presença</h2>
       <form id="rsvp-form" class="mx-auto" style="max-width: 500px;">
         <div class="mb-3">
@@ -367,7 +377,7 @@ Maria Luisa</p>
       </div>
     </section>
 
-    <section id="galeria-section" class="mb-5">
+    <section id="galeria-section" class="section-box mb-5">
       <h2 class="section-title">Galeria</h2>
       <div class="row gallery">
         <div class="col-md-4">
@@ -430,7 +440,7 @@ Maria Luisa</p>
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <section id="lista-presentes-section" class="mb-5">
+    <section id="lista-presentes-section" class="section-box mb-5">
       <h2 class="section-title">Lista de Presentes</h2>
       <div class="row g-4">
         <div class="col-md-4 text-center">
@@ -490,11 +500,11 @@ Maria Luisa</p>
       </div>
     </section>
 
-    <section class="text-center my-5">
+    <section class="text-center my-5 section-box">
       <p>Você será redirecionado para um ambiente seguro do Mercado Pago para finalizar seu presente com Pix, Cartão de Crédito ou Débito 💳✨</p>
     </section>
 
-    <section id="localizacao-section" class="mb-5">
+    <section id="localizacao-section" class="section-box mb-5">
       <h2 class="section-title">Localização</h2>
       <div class="local-info">
         <h3 class="text-center mb-3">Casa Helenya | Buffet Evento Perfeito</h3>
@@ -763,3 +773,4 @@ Maria Luisa</p>
   </script>
 </body>
 </html>
+
