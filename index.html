@@ -23,10 +23,18 @@
     </div>
   </div>
 
+  <!-- Faixa 15 Anos -->
+  <div class="faixa-15-container" aria-hidden="true">
+    <div class="faixa-15">
+      <span class="faixa-number">15</span>
+      <span class="faixa-text">anos</span>
+    </div>
+  </div>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#top">Maria Luisa 15 Anos</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -61,8 +69,8 @@
 
   <!-- Player de Música Melhorado -->
   <div class="music-player-container" id="musicPlayer">
-    <button class="music-toggle-btn" id="musicToggle">
-      <i class="fas fa-music" id="music-icon"></i>
+    <button class="music-toggle-btn" id="musicToggle" aria-label="Abrir/fechar player de música" title="Player de Música">
+      <i class="fas fa-music" id="music-icon" aria-hidden="true"></i>
     </button>
     
     <div class="music-controls">
@@ -71,7 +79,7 @@
         <div class="music-artist" id="currentSongArtist">Playlist Especial</div>
       </div>
       
-      <div class="visualizer" id="visualizer">
+      <div class="visualizer" id="visualizer" aria-hidden="true">
         <div class="bar"></div>
         <div class="bar"></div>
         <div class="bar"></div>
@@ -84,7 +92,7 @@
         <div class="bar"></div>
       </div>
       
-      <div class="progress-container" id="progressContainer">
+      <div class="progress-container" id="progressContainer" role="progressbar" aria-label="Progresso da música" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-bar" id="progressBar"></div>
       </div>
       
@@ -94,41 +102,42 @@
       </div>
       
       <div class="volume-control">
-        <i class="fas fa-volume-down" style="font-size: 0.9rem;"></i>
-        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50">
-        <i class="fas fa-volume-up" style="font-size: 0.9rem;"></i>
+        <i class="fas fa-volume-down volume-icon" aria-hidden="true"></i>
+        <label for="volumeSlider" class="visually-hidden">Volume</label>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="50" title="Controle de volume">
+        <i class="fas fa-volume-up volume-icon" aria-hidden="true"></i>
       </div>
       
       <div class="additional-controls">
-        <button class="control-btn" id="prevBtn" title="Anterior">
-          <i class="fas fa-step-backward"></i>
+        <button class="control-btn" id="prevBtn" title="Música anterior" aria-label="Música anterior">
+          <i class="fas fa-step-backward" aria-hidden="true"></i>
         </button>
-        <button class="control-btn" id="playPauseBtn" title="Play/Pause">
-          <i class="fas fa-play" id="playPauseIcon"></i>
+        <button class="control-btn" id="playPauseBtn" title="Play/Pause" aria-label="Reproduzir ou pausar música">
+          <i class="fas fa-play" id="playPauseIcon" aria-hidden="true"></i>
         </button>
-        <button class="control-btn" id="nextBtn" title="Próxima">
-          <i class="fas fa-step-forward"></i>
+        <button class="control-btn" id="nextBtn" title="Próxima música" aria-label="Próxima música">
+          <i class="fas fa-step-forward" aria-hidden="true"></i>
         </button>
-        <button class="control-btn" id="shuffleBtn" title="Embaralhar">
-          <i class="fas fa-random"></i>
+        <button class="control-btn" id="shuffleBtn" title="Embaralhar" aria-label="Embaralhar playlist">
+          <i class="fas fa-random" aria-hidden="true"></i>
         </button>
-        <button class="control-btn" id="repeatBtn" title="Repetir">
-          <i class="fas fa-redo"></i>
+        <button class="control-btn" id="repeatBtn" title="Repetir" aria-label="Repetir música">
+          <i class="fas fa-redo" aria-hidden="true"></i>
         </button>
       </div>
       
       <div class="playlist" id="playlist">
         <div class="playlist-item active" data-src="musicas/musica.mp3">
-          <i class="fas fa-music"></i>
+          <i class="fas fa-music" aria-hidden="true"></i>
           <span>Música Principal da Festa</span>
         </div>
       </div>
     </div>
   </div>
   
-  <section class="countdown-section text-center py-4">
+  <section class="countdown-section text-center py-4" aria-label="Contagem regressiva para a festa">
     <h2 class="section-title">Faltam</h2>
-    <div id="countdown" class="d-flex justify-content-center gap-4 fs-4 fw-bold text-danger"></div>
+    <div id="countdown" class="d-flex justify-content-center gap-4 fs-4 fw-bold" aria-live="polite"></div>
   </section>
 
   <div class="container my-5">
@@ -154,16 +163,19 @@
 
     <section id="confirmacao-presenca-section" class="section-box mb-5" data-aos="fade-up">
       <h2 class="section-title">Confirmação de Presença</h2>
-      <form id="rsvp-form" class="mx-auto" style="max-width: 500px;">
+      <form id="rsvp-form" class="rsvp-form mx-auto">
         <div class="mb-3">
+          <label for="nome" class="form-label visually-hidden">Seu nome</label>
           <input type="text" class="form-control" id="nome" placeholder="Seu nome" required>
           <div class="invalid-feedback">Por favor, informe seu nome.</div>
         </div>
         <div class="mb-3">
+          <label for="acompanhantes" class="form-label visually-hidden">Número de acompanhantes</label>
           <input type="number" class="form-control" id="acompanhantes" placeholder="Número de acompanhantes (incluindo você)" required min="0">
           <div class="invalid-feedback">Por favor, informe o número de acompanhantes.</div>
         </div>
         <div class="mb-3">
+          <label for="nomesAcompanhantes" class="form-label visually-hidden">Nomes dos acompanhantes</label>
           <textarea class="form-control" id="nomesAcompanhantes" rows="2" placeholder="Nome dos acompanhantes (incluindo você)"></textarea>
           <p class="small-transparent-text">Coloque apenas os nomes dos convidados que constam no convite recebido.</p>
         </div>
@@ -173,21 +185,23 @@
         </div>
         <button type="submit" class="btn w-100 btn-submit">Confirmar Presença</button>
       </form>
-      <p class="text-center mt-3" id="msg-confirmacao"></p>
+      <p class="text-center mt-3" id="msg-confirmacao" aria-live="polite"></p>
       
-      <div id="fallback-form" style="display: none;">
+      <div id="fallback-form" class="fallback-form">
         <p class="text-danger">Nosso sistema de confirmação está temporariamente indisponível.</p>
         <p>Por favor, confirme sua presença através do nosso formulário alternativo:</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYOUR_GOOGLE_FORM_ID/viewform" 
            class="btn btn-primary w-100 mb-2" 
-           target="_blank">
+           target="_blank"
+           rel="noopener noreferrer">
            Confirmar via Google Forms
         </a>
         <p class="mt-2">Ou pelo WhatsApp:</p>
         <a href="https://wa.me/5511945353132?text=Olá,%20gostaria%20de%20confirmar%20minha%20presença%20para%20a%20festa%20de%2015%20anos%20da%20Maria%20Luisa" 
            class="btn btn-whatsapp w-100" 
-           target="_blank">
-           <i class="fab fa-whatsapp"></i> Confirmar via WhatsApp
+           target="_blank"
+           rel="noopener noreferrer">
+           <i class="fab fa-whatsapp" aria-hidden="true"></i> Confirmar via WhatsApp
         </a>
       </div>
     </section>
@@ -195,15 +209,14 @@
     <section id="galeria-section" class="section-box mb-5" data-aos="fade-up">
       <h2 class="section-title">Galeria de Fotos</h2>
       
-      <!-- Galeria em Grid - Fotos lado a lado -->
       <div class="gallery-grid">
         <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
           <img src="imagens/1.jpg" 
                alt="Maria Luisa aos 5 anos"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Maria Luisa aos 5 anos</span>
           </div>
           <div class="gallery-caption">Maria Luisa aos 5 anos</div>
@@ -213,9 +226,9 @@
           <img src="imagens/2.jpg" 
                alt="Primeiro dia de escola"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Primeiro dia de escola</span>
           </div>
           <div class="gallery-caption">Primeiro dia de escola</div>
@@ -225,9 +238,9 @@
           <img src="imagens/3.jpg" 
                alt="Aniversário de 10 anos"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Aniversário de 10 anos</span>
           </div>
           <div class="gallery-caption">Aniversário de 10 anos</div>
@@ -237,9 +250,9 @@
           <img src="imagens/4.jpg" 
                alt="Férias na praia"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Férias na praia</span>
           </div>
           <div class="gallery-caption">Férias na praia</div>
@@ -249,9 +262,9 @@
           <img src="imagens/5.jpg" 
                alt="Com a família"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Com a família</span>
           </div>
           <div class="gallery-caption">Com a família</div>
@@ -261,9 +274,9 @@
           <img src="imagens/0.jpg" 
                alt="Momento especial"
                loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-          <div class="img-fallback" style="display: none;">
-            <i class="fas fa-image"></i>
+               onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+          <div class="img-fallback">
+            <i class="fas fa-image" aria-hidden="true"></i>
             <span>Momento especial</span>
           </div>
           <div class="gallery-caption">Momento especial</div>
@@ -272,11 +285,11 @@
     </section>
 
     <!-- Lightbox para galeria -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox-close">×</span>
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de fotos">
+      <button class="lightbox-close" aria-label="Fechar visualizador">×</button>
       <div class="lightbox-nav">
-        <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
-        <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+        <button id="prev-btn" aria-label="Foto anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+        <button id="next-btn" aria-label="Próxima foto"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
       </div>
       <div class="lightbox-content">
         <img src="" alt="" id="lightbox-image">
@@ -293,112 +306,449 @@
             <img src="imagens/caixadesom.jpg" 
                  alt="Caixa de Som Bluetooth" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-music"></i>
-              <span>Caixa de Som</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-music" aria-hidden="true"></i>
+              <span>Caixa de Som Bluetooth</span>
             </div>
           </div>
           <h5>Caixa de Som Bluetooth</h5>
           <p class="small-transparent-text">Perfeita para curtir as músicas favoritas</p>
-          <div class="price">R$ 60,00</div>
-          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 350,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
-        
         <div class="presente-item" data-aos="flip-left" data-aos-delay="200">
           <div class="image-container">
             <img src="imagens/maquiagem.jpg" 
-                 alt="Kit Maquiagem" 
+                 alt="Kit Maquiagem Profissional" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-palette"></i>
-              <span>Kit Maquiagem</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-palette" aria-hidden="true"></i>
+              <span>Kit Maquiagem Profissional</span>
             </div>
           </div>
           <h5>Kit Maquiagem Profissional</h5>
           <p class="small-transparent-text">Para arrasar em todas as ocasiões</p>
-          <div class="price">R$ 100,00</div>
-          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 400,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
-        
         <div class="presente-item" data-aos="flip-left" data-aos-delay="300">
           <div class="image-container">
             <img src="imagens/spa.jpg" 
-                 alt="Vale Spa" 
+                 alt="Vale Spa/Beleza" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-spa"></i>
-              <span>Vale Spa</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-spa" aria-hidden="true"></i>
+              <span>Vale Spa/Beleza</span>
             </div>
           </div>
           <h5>Vale Spa/Beleza</h5>
           <p class="small-transparent-text">Um dia de princesa e cuidados</p>
-          <div class="price">R$ 200,00</div>
-          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 350,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
-        
         <div class="presente-item" data-aos="flip-left" data-aos-delay="400">
           <div class="image-container">
             <img src="imagens/perfume.jpg" 
                  alt="Perfume Importado" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-wind"></i>
-              <span>Perfume</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-wind" aria-hidden="true"></i>
+              <span>Perfume Importado</span>
             </div>
           </div>
           <h5>Perfume Importado</h5>
           <p class="small-transparent-text">Fragrância especial para momentos únicos</p>
-          <div class="price">R$ 150,00</div>
-          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 170,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
-        
         <div class="presente-item" data-aos="flip-left" data-aos-delay="500">
           <div class="image-container">
             <img src="imagens/bolsa.jpg" 
                  alt="Bolsa Fashion" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-shopping-bag"></i>
-              <span>Bolsa</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+              <span>Bolsa Fashion</span>
             </div>
           </div>
           <h5>Bolsa Fashion</h5>
           <p class="small-transparent-text">Acompanhando as últimas tendências</p>
-          <div class="price">R$ 120,00</div>
-          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 400,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
-        
         <div class="presente-item" data-aos="flip-left" data-aos-delay="600">
           <div class="image-container">
             <img src="imagens/livros.jpg" 
                  alt="Coleção de Livros" 
                  loading="lazy"
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="img-fallback" style="display: none;">
-              <i class="fas fa-book"></i>
-              <span>Livros</span>
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-book" aria-hidden="true"></i>
+              <span>Coleção de Livros</span>
             </div>
           </div>
           <h5>Coleção de Livros</h5>
           <p class="small-transparent-text">Para aventuras literárias incríveis</p>
-          <div class="price">R$ 80,00</div>
-          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank">
-            <i class="fas fa-gift"></i> Presentear
+          <div class="price">R$ 500,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="100">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Colar Folheado a Ouro" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-gift" aria-hidden="true"></i>
+              <span>Colar Folheado a Ouro</span>
+            </div>
+          </div>
+          <h5>Colar Folheado a Ouro</h5>
+          <p class="small-transparent-text">Joia delicada e sofisticada</p>
+          <div class="price">R$ 220,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="200">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Conjunto de Roupa Casual" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-tshirt" aria-hidden="true"></i>
+              <span>Conjunto de Roupa Casual</span>
+            </div>
+          </div>
+          <h5>Conjunto de Roupa Casual</h5>
+          <p class="small-transparent-text">Conforto e estilo no dia a dia</p>
+          <div class="price">R$ 180,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="300">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Fone de Ouvido Bluetooth" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-headphones" aria-hidden="true"></i>
+              <span>Fone de Ouvido Bluetooth</span>
+            </div>
+          </div>
+          <h5>Fone de Ouvido Bluetooth</h5>
+          <p class="small-transparent-text">Música de qualidade em qualquer lugar</p>
+          <div class="price">R$ 220,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="400">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Mini Câmera Instantânea" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-camera" aria-hidden="true"></i>
+              <span>Mini Câmera Instantânea</span>
+            </div>
+          </div>
+          <h5>Mini Câmera Instantânea</h5>
+          <p class="small-transparent-text">Registrar os melhores momentos</p>
+          <div class="price">R$ 160,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="500">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Kit Skincare Completo" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <span>Kit Skincare Completo</span>
+            </div>
+          </div>
+          <h5>Kit Skincare Completo</h5>
+          <p class="small-transparent-text">Cuidados diários com a pele</p>
+          <div class="price">R$ 150,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="600">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Tiara com Pedrarias" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-crown" aria-hidden="true"></i>
+              <span>Tiara com Pedrarias</span>
+            </div>
+          </div>
+          <h5>Tiara com Pedrarias</h5>
+          <p class="small-transparent-text">Para se sentir uma rainha</p>
+          <div class="price">R$ 350,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="100">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Tênis Colorido Fashion" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-shoe-prints" aria-hidden="true"></i>
+              <span>Tênis Colorido Fashion</span>
+            </div>
+          </div>
+          <h5>Tênis Colorido Fashion</h5>
+          <p class="small-transparent-text">Estilo e conforto nos pés</p>
+          <div class="price">R$ 280,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="200">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Óculos de Sol Estiloso" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-sun" aria-hidden="true"></i>
+              <span>Óculos de Sol Estiloso</span>
+            </div>
+          </div>
+          <h5>Óculos de Sol Estiloso</h5>
+          <p class="small-transparent-text">Proteção com muito charme</p>
+          <div class="price">R$ 320,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="300">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Kit de Arte e Pintura" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-paint-brush" aria-hidden="true"></i>
+              <span>Kit de Arte e Pintura</span>
+            </div>
+          </div>
+          <h5>Kit de Arte e Pintura</h5>
+          <p class="small-transparent-text">Para expressar a criatividade</p>
+          <div class="price">R$ 160,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="400">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Jogo de Tabuleiro" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-gamepad" aria-hidden="true"></i>
+              <span>Jogo de Tabuleiro</span>
+            </div>
+          </div>
+          <h5>Jogo de Tabuleiro</h5>
+          <p class="small-transparent-text">Diversão garantida com os amigos</p>
+          <div class="price">R$ 180,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="500">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Guarda-Chuva Fashion" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-umbrella" aria-hidden="true"></i>
+              <span>Guarda-Chuva Fashion</span>
+            </div>
+          </div>
+          <h5>Guarda-Chuva Fashion</h5>
+          <p class="small-transparent-text">Estilo mesmo nos dias de chuva</p>
+          <div class="price">R$ 320,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="600">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Kit Aromaterapia" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-leaf" aria-hidden="true"></i>
+              <span>Kit Aromaterapia</span>
+            </div>
+          </div>
+          <h5>Kit Aromaterapia</h5>
+          <p class="small-transparent-text">Relaxamento e bem-estar</p>
+          <div class="price">R$ 450,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="100">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Diário Decorado" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-heart" aria-hidden="true"></i>
+              <span>Diário Decorado</span>
+            </div>
+          </div>
+          <h5>Diário Decorado</h5>
+          <p class="small-transparent-text">Para registrar os sonhos e memórias</p>
+          <div class="price">R$ 160,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="200">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Almofada Personalizada" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-bicycle" aria-hidden="true"></i>
+              <span>Almofada Personalizada</span>
+            </div>
+          </div>
+          <h5>Almofada Personalizada</h5>
+          <p class="small-transparent-text">Decoração especial para o quarto</p>
+          <div class="price">R$ 450,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="300">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Pulseira de Prata" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-star" aria-hidden="true"></i>
+              <span>Pulseira de Prata</span>
+            </div>
+          </div>
+          <h5>Pulseira de Prata</h5>
+          <p class="small-transparent-text">Elegância no pulso</p>
+          <div class="price">R$ 170,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="400">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Kit de Glitter e Purpurina" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-magic" aria-hidden="true"></i>
+              <span>Kit de Glitter e Purpurina</span>
+            </div>
+          </div>
+          <h5>Kit de Glitter e Purpurina</h5>
+          <p class="small-transparent-text">Brilhe em qualquer ocasião</p>
+          <div class="price">R$ 400,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="500">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Assinatura Streaming" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-film" aria-hidden="true"></i>
+              <span>Assinatura Streaming</span>
+            </div>
+          </div>
+          <h5>Assinatura Streaming</h5>
+          <p class="small-transparent-text">Maratonas sem fim</p>
+          <div class="price">R$ 180,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2AQom8W" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="600">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Ukulelê para Iniciantes" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-guitar" aria-hidden="true"></i>
+              <span>Ukulelê para Iniciantes</span>
+            </div>
+          </div>
+          <h5>Ukulelê para Iniciantes</h5>
+          <p class="small-transparent-text">Descobrir o talento musical</p>
+          <div class="price">R$ 250,00</div>
+          <a class="btn btn-success" href="https://mpago.la/271Hbw8" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
+          </a>
+        </div>
+        <div class="presente-item" data-aos="flip-left" data-aos-delay="100">
+          <div class="image-container">
+            <img src="imagens/presente.jpg" 
+                 alt="Kit Pintura em Tecido" 
+                 loading="lazy"
+                 onerror="this.classList.add('img-hidden'); this.nextElementSibling.classList.add('img-visible')">
+            <div class="img-fallback">
+              <i class="fas fa-palette" aria-hidden="true"></i>
+              <span>Kit Pintura em Tecido</span>
+            </div>
+          </div>
+          <h5>Kit Pintura em Tecido</h5>
+          <p class="small-transparent-text">Personalizar roupas e bolsas</p>
+          <div class="price">R$ 180,00</div>
+          <a class="btn btn-success" href="https://mpago.la/2MFAnhC" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-gift" aria-hidden="true"></i> Presentear
           </a>
         </div>
       </div>
@@ -413,18 +763,19 @@
       <div class="local-info">
         <h3 class="text-center mb-3">Casa Helenya | Buffet Evento Perfeito</h3>
         <p class="text-center mb-4">
-          <i class="fas fa-map-marker-alt"></i> Av. Paes de Barros, 3670 - Vila Prudente<br>
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Av. Paes de Barros, 3670 - Vila Prudente<br>
           São Paulo - SP<br>
           CEP: 03149-000
         </p>
         
-        <div id="map"></div>
+        <div id="map" aria-label="Mapa da localização do evento"></div>
         
         <div class="text-center mt-3">
           <a id="get-directions-btn" href="https://www.google.com/maps/place/Av.+Paes+de+Barros,+3670+-+Vila+Prudente,+S%C3%A3o+Paulo+-+SP,+03149-000/@-23.5829827,-46.5893411,807m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94ce5c0e928e3685:0x50152e647dcfc039!8m2!3d-23.5829827!4d-46.5867662!16s%2Fg%2F11c3q5nrgt?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D" 
-              target="_blank" 
+              target="_blank"
+              rel="noopener noreferrer"
               class="btn btn-primary">
-              <i class="fas fa-directions"></i> Obter Direções
+              <i class="fas fa-directions" aria-hidden="true"></i> Obter Direções
           </a>
         </div>
       </div>

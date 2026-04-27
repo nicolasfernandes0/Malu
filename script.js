@@ -479,6 +479,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function showFallback() {
     if (fallbackForm) {
       fallbackForm.style.display = 'block';
+      fallbackForm.classList.add('fallback-form-visible');
     }
   }
   
