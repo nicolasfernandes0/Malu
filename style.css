@@ -206,6 +206,65 @@ header p {
   margin-bottom: 40px;
 }
 
+.instagram-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  background: linear-gradient(135deg, #fff 0%, #fff8dc 100%);
+  border: 2px solid rgba(212, 175, 55, 0.45);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 26px 30px;
+  text-align: left;
+}
+
+.instagram-icon {
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f58529, #dd2a7b 45%, #8134af 75%, #515bd4);
+  color: var(--white);
+  font-size: 2.5em;
+  box-shadow: 0 8px 20px rgba(221, 42, 123, 0.28);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.instagram-icon:hover {
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(221, 42, 123, 0.36);
+}
+
+.instagram-content h2 {
+  margin: 0 0 8px;
+  color: var(--oscar-red);
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2em;
+}
+
+.instagram-content p {
+  margin: 0 0 10px;
+  color: var(--dark-text);
+}
+
+.instagram-content a {
+  color: var(--oscar-gold);
+  font-size: 1.35em;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.instagram-content a:hover {
+  color: var(--oscar-red);
+  text-decoration: underline;
+}
+
 /* Galeria em Grid - Fotos lado a lado */
 .gallery-grid {
   display: grid;
@@ -448,6 +507,7 @@ footer {
 .countdown-section .section-title {
   font-size: 1.8em;
   margin-bottom: 12px;
+  color: var(--oscar-red);
 }
 
 #countdown {
@@ -934,6 +994,26 @@ footer {
     padding: 18px 15px;
     border-radius: 12px;
   }
+
+  .instagram-box {
+    align-items: center;
+    gap: 16px;
+    padding: 22px 18px;
+  }
+
+  .instagram-icon {
+    width: 62px;
+    height: 62px;
+    font-size: 2em;
+  }
+
+  .instagram-content h2 {
+    font-size: 1.8em;
+  }
+
+  .instagram-content a {
+    font-size: 1.15em;
+  }
   
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1021,6 +1101,11 @@ footer {
 
   .section-box {
     padding: 15px 12px;
+  }
+
+  .instagram-box {
+    flex-direction: column;
+    text-align: center;
   }
 
   .section-title {
