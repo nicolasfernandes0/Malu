@@ -392,6 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const msgConfirmacao = document.getElementById('msg-confirmacao');
   const fallbackForm = document.getElementById('fallback-form');
   const getDirectionsBtn = document.getElementById('get-directions-btn');
+  const googleFormsUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfUvm7Er6HX3vYerHBBm4Ep3CnEdMaoN41QlnMMr2lUNivTHQ/viewform?usp=publish-editor';
 
   // Coordenadas do local para o Mapbox
   const venueCoords = [-46.58672328878314, -23.582845019784283];
@@ -423,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showMessage('Enviando sua confirmação...', 'loading');
     
     try {
-      const response = await fetch('https://api.sheetmonkey.io/form/pzJG2fUpSjbVf4FzQzxVB5', {
+      const response = await fetch('https://api.sheetmonkey.io/form/abDW96oucq7jpRsfrnBn4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -457,8 +458,9 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Erro ao enviar:', error);
       localStorage.setItem('formFailed', 'true');
       
-      showMessage('Ocorreu um erro ao enviar sua confirmação.', 'error');
+      showMessage('Ocorreu um erro ao enviar sua confirmação. Redirecionando para o formulário alternativo...', 'error');
       showFallback();
+      window.location.href = googleFormsUrl;
     }
   }
   
