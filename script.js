@@ -233,37 +233,30 @@ class MusicPlayer {
 function setupGalleryLightbox() {
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightbox-image');
-  const lightboxCaption = document.getElementById('lightbox-caption');
   const closeBtn = document.querySelector('.lightbox-close');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
-  
-  // Seleciona todas as imagens da galeria grid
-  const galleryImages = document.querySelectorAll('.gallery-item img');
-  let currentImageIndex = 0;
-  
-  // Abrir lightbox quando uma imagem é clicada
-  galleryImages.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      if (img.complete && img.naturalHeight !== 0 && img.style.display !== 'none') {
-        openLightbox(index);
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+  let currentItem = galleryItems[0] || null;
+
+  galleryItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!item.classList.contains('is-hidden')) {
+        openLightbox(item);
       }
     });
   });
-  
-  // Fechar lightbox
+
   closeBtn.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) {
       closeLightbox();
     }
   });
-  
-  // Navegação entre imagens
+
   prevBtn.addEventListener('click', showPrevImage);
   nextBtn.addEventListener('click', showNextImage);
-  
-  // Navegação com teclado
+
   document.addEventListener('keydown', (e) => {
     if (lightbox.classList.contains('active')) {
       if (e.key === 'Escape') {
@@ -275,58 +268,79 @@ function setupGalleryLightbox() {
       }
     }
   });
-  
-  function openLightbox(index) {
-    currentImageIndex = index;
-    const img = galleryImages[index];
-    const imgSrc = img.getAttribute('src');
-    const imgAlt = img.getAttribute('alt');
-    
-    // Obtém a legenda do elemento .gallery-caption
-    const captionElement = img.closest('.gallery-item').querySelector('.gallery-caption');
-    const imgCaption = captionElement ? captionElement.textContent : imgAlt;
-    
-    lightboxImage.setAttribute('src', imgSrc);
-    lightboxImage.setAttribute('alt', imgAlt);
-    lightboxCaption.textContent = imgCaption;
+
+  function visibleItems() {
+    const visible = galleryItems.filter((item) => !item.classList.contains('is-hidden'));
+    return visible.length ? visible : galleryItems;
+  }
+
+  function openLightbox(item) {
+    currentItem = item;
+    const img = item.querySelector('img');
+lightboxImage.setAttribute('src', img.getAttribute('src'));
+    lightboxImage.setAttribute('alt', img.getAttribute('alt'));
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-  
+
   function closeLightbox() {
     lightbox.classList.remove('active');
     document.body.style.overflow = 'auto';
   }
-  
+
   function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
-    const img = galleryImages[currentImageIndex];
-    const imgSrc = img.getAttribute('src');
-    const imgAlt = img.getAttribute('alt');
-    
-    const captionElement = img.closest('.gallery-item').querySelector('.gallery-caption');
-    const imgCaption = captionElement ? captionElement.textContent : imgAlt;
-    
-    lightboxImage.setAttribute('src', imgSrc);
-    lightboxImage.setAttribute('alt', imgAlt);
-    lightboxCaption.textContent = imgCaption;
+    const items = visibleItems();
+    const currentIndex = Math.max(0, items.indexOf(currentItem));
+    openLightbox(items[(currentIndex - 1 + items.length) % items.length]);
   }
-  
+
   function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
-    const img = galleryImages[currentImageIndex];
-    const imgSrc = img.getAttribute('src');
-    const imgAlt = img.getAttribute('alt');
-    
-    const captionElement = img.closest('.gallery-item').querySelector('.gallery-caption');
-    const imgCaption = captionElement ? captionElement.textContent : imgAlt;
-    
-    lightboxImage.setAttribute('src', imgSrc);
-    lightboxImage.setAttribute('alt', imgAlt);
-    lightboxCaption.textContent = imgCaption;
+    const items = visibleItems();
+    const currentIndex = Math.max(0, items.indexOf(currentItem));
+    openLightbox(items[(currentIndex + 1) % items.length]);
   }
 }
 
+function setupGalleryExperience() {
+  const filters = Array.from(document.querySelectorAll('.gallery-filter'));
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  const loadMore = document.getElementById('gallery-load-more');
+  const initialLimit = 12;
+  let activeFilter = 'destaques';
+  let visibleLimit = initialLimit;
+
+  if (!items.length || !loadMore) {
+    return;
+  }
+
+  function matchingItems() {
+    return items.filter((item) => activeFilter === 'all' || item.dataset.category === activeFilter);
+  }
+
+  function renderGallery() {
+    const matches = matchingItems();
+    items.forEach((item) => item.classList.add('is-hidden'));
+    matches.slice(0, visibleLimit).forEach((item) => item.classList.remove('is-hidden'));
+    loadMore.classList.toggle('is-hidden', matches.length <= visibleLimit);
+  }
+
+  filters.forEach((button) => {
+    button.addEventListener('click', () => {
+      filters.forEach((filter) => filter.classList.remove('active'));
+      button.classList.add('active');
+      activeFilter = button.dataset.filter;
+      visibleLimit = activeFilter === 'destaques' ? initialLimit : 12;
+      renderGallery();
+    });
+  });
+
+  loadMore.addEventListener('click', () => {
+    visibleLimit += 12;
+    renderGallery();
+  });
+
+  renderGallery();
+}
 // Inicialização principal
 document.addEventListener('DOMContentLoaded', function() {
   // Inicializar AOS (Animate On Scroll)
@@ -384,7 +398,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000);
   });
   
-  // Inicializar lightbox para a galeria
+  // Inicializar interacoes da galeria
+  setupGalleryExperience();
   setupGalleryLightbox();
   
   // Sistema de confirmação de presença
