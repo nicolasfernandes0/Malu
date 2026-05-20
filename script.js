@@ -277,7 +277,7 @@ function setupGalleryLightbox() {
   function openLightbox(item) {
     currentItem = item;
     const img = item.querySelector('img');
-lightboxImage.setAttribute('src', img.getAttribute('src'));
+    lightboxImage.setAttribute('src', img.getAttribute('src'));
     lightboxImage.setAttribute('alt', img.getAttribute('alt'));
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -305,37 +305,45 @@ function setupGalleryExperience() {
   const filters = Array.from(document.querySelectorAll('.gallery-filter'));
   const items = Array.from(document.querySelectorAll('.gallery-item'));
   const loadMore = document.getElementById('gallery-load-more');
-  const initialLimit = 12;
+  const allLimit = 12;
   let activeFilter = 'destaques';
-  let visibleLimit = initialLimit;
+  let visibleLimit = allLimit;
 
   if (!items.length || !loadMore) {
     return;
   }
 
   function matchingItems() {
-    return items.filter((item) => activeFilter === 'all' || item.dataset.category === activeFilter);
+    if (activeFilter === 'destaques') {
+      return items.filter((item) => item.dataset.category === 'destaques');
+    }
+    return items;
   }
 
   function renderGallery() {
     const matches = matchingItems();
+    const limit = activeFilter === 'destaques' ? matches.length : visibleLimit;
     items.forEach((item) => item.classList.add('is-hidden'));
-    matches.slice(0, visibleLimit).forEach((item) => item.classList.remove('is-hidden'));
-    loadMore.classList.toggle('is-hidden', matches.length <= visibleLimit);
+    matches.slice(0, limit).forEach((item) => item.classList.remove('is-hidden'));
+    loadMore.classList.toggle('is-hidden', activeFilter === 'destaques' || matches.length <= limit);
   }
 
   filters.forEach((button) => {
     button.addEventListener('click', () => {
-      filters.forEach((filter) => filter.classList.remove('active'));
+      filters.forEach((filter) => {
+        filter.classList.remove('active');
+        filter.setAttribute('aria-pressed', 'false');
+      });
       button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
       activeFilter = button.dataset.filter;
-      visibleLimit = activeFilter === 'destaques' ? initialLimit : 12;
+      visibleLimit = allLimit;
       renderGallery();
     });
   });
 
   loadMore.addEventListener('click', () => {
-    visibleLimit += 12;
+    visibleLimit += allLimit;
     renderGallery();
   });
 
