@@ -183,7 +183,9 @@ header p {
     padding: 70px 15px 60px;
   }
   header h1 {
-    font-size: 3.8em;
+    font-size: clamp(4rem, 13vw, 5.1rem);
+    line-height: 1;
+    max-width: 96vw;
   }
   header p {
     font-size: 1.1em;
@@ -1113,7 +1115,8 @@ footer {
   }
 
   header h1 {
-    font-size: 2em;
+    font-size: clamp(3.6rem, 16vw, 4.7rem);
+    line-height: 0.98;
   }
 
   header p {

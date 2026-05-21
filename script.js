@@ -11,11 +11,13 @@ class MusicPlayer {
     this.isShuffled = false;
     this.repeatMode = 0; // 0: não repetir, 1: repetir lista, 2: repetir música
     this.volume = 0.5;
+    this.autoplayFallbackActive = false;
     
     this.initializeElements();
     this.setupEventListeners();
     this.setupPlaylist();
     this.updateVisualizer();
+    this.startAutoplay();
   }
 
   initializeElements() {
@@ -87,6 +89,40 @@ class MusicPlayer {
         this.playTrack(index);
       });
     });
+  }
+
+  startAutoplay() {
+    const start = () => {
+      this.audio.play().catch(() => {
+        this.enablePlayOnFirstInteraction();
+      });
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(start, 250);
+    } else {
+      window.addEventListener('load', () => setTimeout(start, 250), { once: true });
+    }
+  }
+
+  enablePlayOnFirstInteraction() {
+    if (this.autoplayFallbackActive) return;
+    this.autoplayFallbackActive = true;
+
+    const cleanup = () => {
+      document.removeEventListener('click', tryStart);
+      document.removeEventListener('touchstart', tryStart);
+      document.removeEventListener('keydown', tryStart);
+      this.autoplayFallbackActive = false;
+    };
+
+    const tryStart = () => {
+      this.audio.play().then(cleanup).catch(() => {});
+    };
+
+    document.addEventListener('click', tryStart, { once: true });
+    document.addEventListener('touchstart', tryStart, { once: true });
+    document.addEventListener('keydown', tryStart, { once: true });
   }
 
   togglePlay() {
