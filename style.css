@@ -193,6 +193,25 @@ header p {
   }
 }
 
+/* Ajustes adicionais para mobile pequeno: reduzir header e evitar quebra do título */
+@media (max-width: 420px) {
+  header {
+    padding: 40px 12px 36px; /* reduz o espaço superior/inferior do header */
+  }
+  header h1 {
+    font-size: 2.2rem; /* tamanho menor para caber em uma linha */
+    line-height: 1;    /* reduzir espaçamento entre linhas */
+    white-space: normal; /* permitir quebra controlada se necessário */
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  header p {
+    font-size: 0.95rem;
+    margin-top: 8px;
+  }
+}
+
 .section-title {
   font-size: 2.5em;
   font-family: 'Great Vibes', cursive;
