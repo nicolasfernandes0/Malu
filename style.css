@@ -1115,8 +1115,8 @@ footer {
   }
 
   header h1 {
-    font-size: clamp(3.6rem, 16vw, 4.7rem);
-    line-height: 0.98;
+    font-size: clamp(2.7rem, 12vw, 3.5rem);
+    line-height: 1;
   }
 
   header p {
