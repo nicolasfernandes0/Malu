@@ -445,6 +445,26 @@ document.addEventListener('DOMContentLoaded', function() {
   // Inicializar interacoes da galeria
   setupGalleryExperience();
   setupGalleryLightbox();
+
+  const pixCopyBtn = document.querySelector('.pix-copy-btn');
+  if (pixCopyBtn) {
+    const defaultText = pixCopyBtn.innerHTML;
+
+    pixCopyBtn.addEventListener('click', async () => {
+      const pixKey = pixCopyBtn.dataset.pixKey || '11913516252';
+
+      try {
+        await navigator.clipboard.writeText(pixKey);
+        pixCopyBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Chave copiada';
+      } catch (error) {
+        pixCopyBtn.innerHTML = '<i class="fas fa-qrcode" aria-hidden="true"></i> Chave: 11 913516252';
+      }
+
+      setTimeout(() => {
+        pixCopyBtn.innerHTML = defaultText;
+      }, 2400);
+    });
+  }
   
   // Sistema de confirmação de presença
   const rsvpForm = document.getElementById('rsvp-form');
