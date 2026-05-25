@@ -1165,7 +1165,7 @@ footer {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 576px) {
   #countdown div {
     min-width: 58px;
     padding: 8px 4px;
