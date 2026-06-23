@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Loading Screen -->
   <div id="loading-screen" class="loading-screen">
     <div class="loading-content">
       <div class="spinner-border text-gold" role="status">
@@ -23,7 +22,6 @@
     </div>
   </div>
 
-  <!-- Faixa 15 Anos -->
   <div class="faixa-15-container" aria-hidden="true">
     <div class="faixa-15">
       <span class="faixa-number">15</span>
@@ -49,6 +47,9 @@
             <a class="nav-link" href="#galeria-section">Galeria</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#dress-code-section">Traje</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#lista-presentes-section">Presentes</a>
           </li>
           <li class="nav-item">
@@ -67,7 +68,6 @@
     </div>
   </header>
 
-  <!-- Player de Música Melhorado -->
   <div class="music-player-container" id="musicPlayer">
     <button class="music-toggle-btn" id="musicToggle" aria-label="Abrir/fechar player de música" title="Player de Música">
       <i class="fas fa-music" id="music-icon" aria-hidden="true"></i>
@@ -163,7 +163,7 @@
         
         <p>É o começo de uma nova fase, com mais sonhos, mais liberdade e, claro, mais responsabilidade (ou pelo menos é o que dizem, né? rs).</p>
         
-        <p>Tô super feliz por poder comemorar esse momento com pessoas incríveis — e isso inclui você! 💖</p>
+        <p>Tô super feliz por poder comemorar esse momentão com pessoas incríveis — e isso inclui você! 💖</p>
         
         <p>Obrigada por estar aqui e por fazer parte dessa etapa tão especial da minha vida. Agora... bora curtir, porque a festa vai ser inesquecível! 🎉</p>
         
@@ -218,6 +218,7 @@
         </a>
       </div>
     </section>
+
     <section id="galeria-section" class="section-box gallery-section mb-5" data-aos="fade-up">
       <div class="section-heading">
         <span class="section-kicker">Momentos</span>
@@ -544,7 +545,6 @@
       </div>
     </section>
 
-<!-- Lightbox para galeria -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de fotos">
       <button class="lightbox-close" aria-label="Fechar visualizador">×</button>
       <div class="lightbox-nav">
@@ -557,7 +557,26 @@
       <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-        <section id="lista-presentes-section" class="section-box gifts-section mb-5" data-aos="fade-up">
+<section id="dress-code-section" class="section-box mb-5" data-aos="fade-up">
+      <div class="section-heading text-center mb-4">
+        <span class="section-kicker">Como ir vestido</span>
+        <h2 class="section-title">Dress Code</h2>
+      </div>
+      <div class="row justify-content-center align-items-center g-4 text-center">
+        <div class="col-md-8">
+          <p class="lead">Para nossa grande noite, o traje sugerido é <strong>Esporte Fino / Social</strong>.</p>
+          <hr class="my-3 mx-auto" style="width: 50px; border-top: 2px solid var(--gold, #d4af37);">
+          <p class="mb-2">Prepare o seu melhor look para celebrar e tirar muitas fotos incríveis conosco! ✨</p>
+          
+          <!-- Dicas de cores adicionadas -->
+          <p class="mb-4">
+            <strong>Dica de cores para inspirar:</strong> Preto, Dourado, Vermelho, Prata ou Champagne.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="lista-presentes-section" class="section-box gifts-section mb-5" data-aos="fade-up">
       <div class="section-heading">
         <span class="section-kicker">Carinho em forma de presente</span>
         <h2 class="section-title">Lista de Presentes</h2>
@@ -863,44 +882,40 @@
       </div>
     </section>
 
+    <section class="text-center my-5 section-box" data-aos="fade-up">
+      <div class="container">
+        <h2 class="mb-4">Quase lá! 🌟</h2>
+        <p class="lead mb-4">
+          Escolha a forma que faz mais sentido para você celebrar este momento conosco.
+        </p>
 
-<section class="text-center my-5 section-box" data-aos="fade-up">
-  <div class="container">
-    <h2 class="mb-4">Quase lá! 🌟</h2>
-    
-    <p class="lead mb-4">
-      Escolha a forma que faz mais sentido para você celebrar este momento conosco.
-    </p>
+        <div class="row justify-content-center g-4">
+          <div class="col-md-5">
+            <div class="p-4 border rounded shadow-sm bg-light">
+              <h5><strong>Pagamento Online</strong></h5>
+              <p class="small text-muted">Você será redirecionado ao ambiente seguro do <strong>Mercado Pago</strong>.</p>
+              <div class="d-flex justify-content-center gap-2 mb-3">
+                <span>Pix ⚡</span> | <span>Cartão 💳</span>
+              </div>
+            </div>
+          </div>
 
-    <div class="row justify-content-center g-4">
-      <!-- Opção Digital -->
-      <div class="col-md-5">
-        <div class="p-4 border rounded shadow-sm bg-light">
-          <h5><strong>Pagamento Online</strong></h5>
-          <p class="small text-muted">Você será redirecionado ao ambiente seguro do <strong>Mercado Pago</strong>.</p>
-          <div class="d-flex justify-content-center gap-2 mb-3">
-            <span>Pix ⚡</span> | <span>Cartão 💳</span>
+          <div class="col-md-5">
+            <div class="p-4 border rounded shadow-sm bg-light">
+              <h5><strong>Entrega Presencial</strong></h5>
+              <p class="small text-muted">Prefere algo mais tradicional? Sinta-se à vontade para levar seu presente no dia! 🎁</p>
+              <div class="mt-2">
+                <span class="badge bg-secondary">Entrega no Evento</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Opção Presencial -->
-      <div class="col-md-5">
-        <div class="p-4 border rounded shadow-sm bg-light">
-          <h5><strong>Entrega Presencial</strong></h5>
-          <p class="small text-muted">Prefere algo mais tradicional? Sinta-se à vontade para levar seu presente no dia! 🎁</p>
-          <div class="mt-2">
-            <span class="badge bg-secondary">Entrega no Evento</span>
-          </div>
-        </div>
+        <p class="mt-4 text-muted italic">
+          <small>Independentemente da escolha, sua presença é o nosso maior presente!</small>
+        </p>
       </div>
-    </div>
-
-    <p class="mt-4 text-muted italic">
-      <small>Independentemente da escolha, sua presença é o nosso maior presente!</small>
-    </p>
-  </div>
-</section>
+    </section>
 
     <section id="localizacao-section" class="section-box mb-5" data-aos="fade-up">
       <h2 class="section-title">Localização</h2>
